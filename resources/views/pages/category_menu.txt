@@ -1,0 +1,14 @@
+     <!-- @foreach($navigation as $item)
+    @if($item->children->count() > 0)
+        <li class="dropdown">
+             <a href="#">{{ $item->name }} <span class="caret"></span></a>
+             <ul>
+                 @foreach($item->children as $submenu)
+                     <li><a href="/{{ $submenu->slug }}">{{ $submenu->name }}</a></li>
+                  @endforeach
+             </ul>
+       </li>
+    @else
+        <li><a href="/{{ $item->slug }}">{{ $item->name }}</a></li>
+    @endif
+@endforeach -->

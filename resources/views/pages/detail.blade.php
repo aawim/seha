@@ -259,16 +259,16 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
 
-                  <!-- <div class="review">
+                  <div class="review">
                   <h3>Overoll User Reviews</h3>
                   @if(count($reviews)>0)
-                    <input type="range" value="{{$reviewsum / count($reviews) }}" step="0.25" id="backing4">
+                    <input type="rateit" value="{{$reviewsum / count($reviews)}}" step=""  id="backing4">
                    @endif
                     <div class="rateit" data-rateit-backingfld="#backing4" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                     </div>
                       
-                    <a href="javascript:;"> {{count($reviews)}} </a>
-                  </div> -->
+                    <!-- <a href="javascript:;"> {{count($reviews)}} </a> -->
+                  </div>
 
                   <h3>Location: </h3> <p> Please call for more information</p>
                   <h3>Delivery: </h3> <p> If delivery to the user is required, charges applied.</p>
@@ -351,7 +351,19 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                           <div class="rateit" data-rateit-value="{{$review->rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                         </div>                                              
                         <div class="review-item-content">
-                            <p>{{$review->description}}</p>
+                            <p>{{$review->description}} 
+                            <!-- @if(strlen($review->description)>200)
+
+                            <a href="" >More </a>
+                           @endif -->
+                            
+                           @if(Auth::check())
+                            @if(Auth::user()->id === $review->user_id)
+                              <a href="{{route('review.edit', $review->id)}}">Edit</a> 
+                            @endif
+                           @endif
+                           
+                            </p>
                         </div>
                       </div>
                       @endif
@@ -381,7 +393,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         </div>
                         <div class="form-group">
                           <label for="email">Rating</label>
-                          <input type="range" name="backing5"  value="0" step="0.25" id="backing5" required>
+                          <input type="range" name="backing5"  value="0" step="0" id="backing5" required>
                           <div class="rateit" data-rateit-backingfld="#backing5" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                           </div>
                         </div>

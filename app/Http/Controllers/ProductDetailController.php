@@ -58,13 +58,7 @@ class ProductDetailController extends Controller
 
             $otherPhotoes = ProductPhoto::where('product_id',$id)->get();
             $reviews = Review::where('is_active','1')->where('product_id',$id)->inRandomOrder()->get();
-            
-            
             $reviewsum = Review::sum('rating'); 
-
-            
-
-
             $categories = Category::where('is_active','1')->orderBy('name')->get();
             $product = Product::find($id);
             $users = User::all();

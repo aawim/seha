@@ -71,11 +71,6 @@ Route::get('findSubCat', 'ProductController@findSubCatgeoryName');
 Route::resource('/item', 'ProductDetailController');
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
-    
-    
-    
-    
-    
     Route::prefix('manage')->group(function(){
      Route::get('/home', 'HomeController@dash')->name('index');
      Route::resource('/category', 'CategoryController');
@@ -99,9 +94,6 @@ Route::get('/manage/view/{id}', 'ProductPhotoController@viewPhoto');
 
 Route::group(['middleware' => 'App\Http\Middleware\ClientMiddleware'], function()
 {
-       
-    
-    
     Route::prefix('client')->group(function(){
         Route::resource('/cart', 'CartController');
         Route::resource('/myaccount', 'ClientController');

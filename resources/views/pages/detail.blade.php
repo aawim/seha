@@ -210,43 +210,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                   <h3>Description</h3>  
                   <p>{{$product->description}} </p>
                   </div>
-                  <!-- <div class="product-page-options">
-                    <div class="pull-left">
-                      <label class="control-label">Size:</label>
-                      <select class="form-control input-sm" disabled>
-                        <option>L</option>
-                        <option>M</option>
-                        <option>XL</option>
-                      </select>
-                    </div>
-                    <div class="pull-left">
-                      <label class="control-label">Color:</label>
-                      <select class="form-control input-sm" disabled>
-                        <option>Red</option>
-                        <option>Blue</option>
-                        <option>Black</option>
-                      </select>
-                    </div>
-                  </div> -->
-                   
-                  <div class="product-page-cart">
-                   
-                        <!-- <input id="qty" name="qty"  type="text" value="1"   class="form-control input-sm"> -->
-
-                   <!-- <div class="col-sm-3">
-                        @if ($product->availability === 0)
-                        <input type="text" class="form-control" name="qty" id="qty"   disabled value="1">
-                        @else
-                        <input type="text" class="form-control" name="qty" id="qty"   required value="1">
-                        @endif
-                        </div>
-                    
-                       @if ($product->availability === 0)
-                      <button class="btn btn-primary" disabled  type="submit">Add to cart</button>
-                      @else
-                      <button class="btn btn-primary"   type="submit">Add to cart</button>
-                      @endif -->
-                  </div>
+                
+                 
 
 
                   
@@ -309,34 +274,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     </div>
                    
                    
-                   
-                    <!-- <div class="tab-pane fade" id="Information">
-                      <table class="datasheet">
-                        <tr>
-                          <th colspan="2">Additional features</th>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 1</td>
-                          <td>21 cm</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 2</td>
-                          <td>700 gr.</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 3</td>
-                          <td>10 person</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 4</td>
-                          <td>14 cm</td>
-                        </tr>
-                        <tr>
-                          <td class="datasheet-features-type">Value 5</td>
-                          <td>plastic</td>
-                        </tr>
-                      </table>
-                    </div> -->
+                  
                     <div class="tab-pane fade in active" id="Reviews">
                       <!--<p>There are no reviews for this product.</p>-->
                       @foreach ($reviews as $count2 => $review)
@@ -351,18 +289,36 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                           <div class="rateit" data-rateit-value="{{$review->rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
                         </div>                                              
                         <div class="review-item-content">
-                            <p>{{$review->description}} 
-                            <!-- @if(strlen($review->description)>200)
-
-                            <a href="" >More </a>
-                           @endif -->
+                            <p>
+                            @if(strlen($review->description)>80)
                             
+                          
+                            
+                            {{substr($review->description ,0,80)}} 
+                           <a  data-toggle="collapse" data-target="#{{$count2}}" style="text-decoration:none; cursor:pointer; " id="Hide{{$count2}}"> More </a> | 
+
                            @if(Auth::check())
                             @if(Auth::user()->id === $review->user_id)
-                              <a href="{{route('review.edit', $review->id)}}">Edit</a> 
+                              <a href="{{route('review.edit', $review->id)}}" >Edit</a> 
                             @endif
                            @endif
+                          <div id="{{$count2}}" class="collapse" style="margin-top:-10px; ">
+                              {{  substr($review->description ,80, strlen($review->description) ) }} 
+                              <a  data-toggle="collapse" data-target="#{{$count2}}" style="text-decoration:none; cursor:pointer;" id="Show{{$count2}}" > Less </a> 
                            
+                            
+                      
+
+                           @else
+                           {{$review->description}} 
+                          @endif
+                            
+                       
+
+
+
+
+                           </div>
                             </p>
                         </div>
                       </div>
@@ -524,7 +480,6 @@ Nostrud duis molestie at dolore.</p>
 
 
 
-
     
     <!-- Load javascripts at bottom, this will reduce page load time -->
     <!-- BEGIN CORE PLUGINS(REQUIRED FOR ALL PAGES) -->
@@ -557,6 +512,49 @@ Nostrud duis molestie at dolore.</p>
             Layout.initUniform();
         });
     </script>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript'>
+
+
+ 
+$(document).ready(function() {
+    $("a").click(function(event) {
+       // alert(event.target.id);
+       vat id =event.target.id;
+    });
+});
+
+  $(function(){
+      $('#id').click(function(){
+          $('#id').hide()
+      })
+      $('#id').click(function(){
+          $('#id').show()
+      })
+  })
+
+
+</script>
+
+
+
+
+
+
+
+
+
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

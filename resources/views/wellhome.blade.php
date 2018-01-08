@@ -502,7 +502,9 @@ anchors are inline so you need ot make them block to go full width
         			<div class="row">
         				<div class="price-details col-md-12 col-sm-12 col-xs-12">
         					<p class="details">
-        						Lorem ipsum dolor sit amet, consectetur..
+
+                   
+                   {{substr($product->description ,0,50)}} 
         					</p>
                   <h1>{{$product->name}}</h1>
                   
@@ -595,7 +597,7 @@ anchors are inline so you need ot make them block to go full width
                       </div>
                         </div>
                         <div class="description">
-                          <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed nonumy nibh sed euismod laoreet dolore magna aliquarm erat volutpat Nostrud duis molestie at dolore.</p>
+                          <p>{{$product->description}}</p>
                         </div>
                         <div class="product-page-options">
                           <div class="pull-left">

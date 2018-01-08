@@ -313,11 +313,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                             
                           
 
-@if(2 === 2 )
-
-
-
-@endif
+ 
 
                           </div>
                             </p>

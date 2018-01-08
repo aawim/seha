@@ -63,8 +63,7 @@ $('a[data-toggle="tooltip"]').tooltip({
                   <div class="x_title">
                     <h2>Product |<small>Products are in the system.</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-                    
-                    <!-- <li><a class=" " href=""><i class="btn btn-round btn-success">Create New Category</i></a> -->
+                      <!-- <li><a class=" " href=""><i class="btn btn-round btn-success">Create New Category</i></a> -->
                     <a href="{{route('product.create')}}"><button type="submit" class="btn btn-success">Add New Product</button></a>
                     
                   </li>

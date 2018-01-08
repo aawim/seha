@@ -185,9 +185,9 @@
                                       </div>
                   </form>
 
-
-                  <a href="{{url('manage/photo', $d->id)}}"><button type="submit" class="btn btn-info pull-right">Add Product Photos</button></a>
-                  <a href="{{url('manage/view', $d->id)}}"><button type="submit" class="btn btn-info pull-right">View Product Photos</button></a>
+                  <a href="{{url('manage/photo/view', $d->id)}}"><button type="submit" class="btn btn-info pull-right">View Product Photos</button></a>
+                  <a href="{{url('manage/photo/add', $d->id)}}"><button type="submit" class="btn btn-info pull-right">Add Product Photos</button></a>
+              
 
 
 

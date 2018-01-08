@@ -307,10 +307,10 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
                                       </div>
                   </form>
-
-
-                  <a href="{{url('manage/photo', $d->id)}}"><button type="submit" class="btn btn-info pull-right">Add Product Photos</button></a>
-                  <a href="{{url('manage/view', $d->id)}}"><button type="submit" class="btn btn-info pull-right">View Product Photos</button></a>
+                   
+                  <a href="{{url('client/product/photo/view', $d->id)}}"><button type="submit" class="btn btn-info pull-right">View Product Photos</button></a>
+                  <a href="{{url('client/product/photo/add', $d->id)}}"><button type="submit" class="btn btn-info pull-right">Add Product Photos</button></a>
+                  
 
 
 

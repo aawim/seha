@@ -262,31 +262,53 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <li class="active"><a href="#Reviews" data-toggle="tab">Reviews ({{count($reviews)}})</a></li>
                   </ul>
                   
+
+
+                  
                   <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade" id="Description">
                     @foreach ($reviews as $count2 => $review)
-                      @foreach ($users as $count => $user)
-                      @if($review->user_id == $user->id)
-                     
-                      
-                      <div class="review-item clearfix">
-                        <div class="review-item-submitted">
-                          <strong>Author : {{UCfirst($user->name)}} </strong>
-                          <em>{{$review->created_at}}</em>
-                      
-                          <div class="rateit" data-rateit-value="{{round($ratingSum / count($ratingCount), 1)}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                        </div>                                              
-                        <div class="review-item-content">
-                            <p>{{$review->description}}</p>
-                        </div>
+                    @foreach ($users as $count => $user)
+                    @if($review->user_id == $user->id)
+                  
+                    <div class="review-item clearfix">
+                      <div class="review-item-submitted">
+                        <strong>Author : {{UCfirst($user->name)}} </strong>
+                        <em>{{$review->created_at}}</em>
+                        <div class="rateit" data-rateit-value="{{$review->rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
+                      </div>                                              
+                      <div class="review-item-content">
+                          <p>
+                          @if(strlen($review->description)>80)
+                          {{substr($review->description ,0,80)}} 
+                         <a  data-toggle="collapse" data-target="#{{$count2}}" style="text-decoration:none; cursor:pointer; " id="Hide{{$count2}}"> More </a> | 
 
+                         @if(Auth::check())
+                          @if($review->user_id == $user->id)
+                            <a href="{{route('review.edit', $review->id)}}" >Edit</a> 
+                          @endif
+                         @endif
+                        <div id="{{$count2}}" class="collapse" style="margin-top:-10px; ">
+                            {{  substr($review->description ,80, strlen($review->description) ) }} 
+                            <a  data-toggle="collapse" data-target="#{{$count2}}" style="text-decoration:none; cursor:pointer;" id="Show{{$count2}}" > Less </a> 
+                        @else
 
+                         @if(Auth::check())
+                          @if($review->user_id == Auth::User()->id)
+                          {{$review->description}} 
+                            <a href="{{route('review.edit', $review->id)}}" >Edit</a> 
+                          @endif
+                         @endif
+                       
+                            </div>
+                          </p>
                       </div>
-                      
-                      @endif
-                     
-                      @endforeach
-                      @endforeach
+                   
+                    @endif
+                    @endif
+
+                    @endforeach
+                    @endforeach
                       </div>  
                    
                                  
@@ -306,9 +328,6 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                         <div class="review-item-content">
                             <p>
                             @if(strlen($review->description)>80)
-                            
-                          
-                            
                             {{substr($review->description ,0,80)}} 
                            <a  data-toggle="collapse" data-target="#{{$count2}}" style="text-decoration:none; cursor:pointer; " id="Hide{{$count2}}"> More </a> | 
 
@@ -320,10 +339,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                           <div id="{{$count2}}" class="collapse" style="margin-top:-10px; ">
                               {{  substr($review->description ,80, strlen($review->description) ) }} 
                               <a  data-toggle="collapse" data-target="#{{$count2}}" style="text-decoration:none; cursor:pointer;" id="Show{{$count2}}" > Less </a> 
-                           
-                                               
-
-                           @else
+                          @else
 
                            @if(Auth::check())
                             @if($review->user_id == Auth::User()->id)
@@ -331,17 +347,8 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                               <a href="{{route('review.edit', $review->id)}}" >Edit</a> 
                             @endif
                            @endif
-
-
-
-                          
-                          @endif
-                            
-                          
-
- 
-
-                          </div>
+                         @endif
+                              </div>
                             </p>
                         </div>
                      
@@ -371,16 +378,12 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                           <textarea class="form-control" rows="8" name="description" id="description" required ></textarea>
                         </div>
 
-                       
-                        <label for="review">Rating </label>
+                                              <label for="review">Rating </label>
                        <input type="range" name="backing5"  value="0" step="0.25" id="backing5" required>
                        <div class="rateit" data-rateit-backingfld="#backing5" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
                        </div>
                     
-                  
-
-
-                        <div class="padding-top-20">  
+                         <div class="padding-top-20">  
                         <input type="hidden" value="{{$product->id}}" name="product_id" id="product_id" >                
                           <button type="submit" class="btn btn-primary">Send</button>
                         </div>

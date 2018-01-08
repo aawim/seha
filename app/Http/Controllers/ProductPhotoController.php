@@ -28,7 +28,28 @@ class ProductPhotoController extends Controller
         $d = $request->id;
         return view('product.productPhoto',['d'=>$d]);
     }
-    
+
+
+    public function clientViewPhoto(Request $request)
+    {
+        $productPhotos = ProductPhoto::where('product_id', $request->id)->get();
+        return view('product.ClientProductPhotoIndex',['productPhotos'=>$productPhotos]);
+    }
+
+
+    public function clientAddPhoto(Request $request)
+    {
+        $d = $request->id;
+        return view('product.ClientProductPhoto',['d'=>$d]);
+    }
+
+   
+   
+   
+   
+   
+   
+   
     public function create()
     {
       

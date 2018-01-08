@@ -205,7 +205,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     
 
     <div class="main">
-      <div class="container-fluid">
+      <div class="container">
       <ul class="breadcrumb">
             <li><a href="index.html">Home</a></li>
             <li><a href="">Store</a></li>
@@ -216,7 +216,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
         
         <div class="row">
 
-            <div class=" sidebar col-md-2">
+            <div class=" sidebar col-md-3">
               
 
 
@@ -248,7 +248,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
 
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
               
  <!-- BEGIN PRODUCT LIST -->
  <div class="row product-list">
@@ -266,7 +266,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
               <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="product-item">
                   <div class="pi-img-wrapper">
-                    <img src="{{url('/').'/'.$product->image}}" style="height:150px;" class="img-responsive" alt="Berry Lace Dress">
+                    <img src="{{url('/').'/'.$product->image}}" style="height:100px;" class="img-responsive" alt="Berry Lace Dress">
                     <div>
                     <a href="{{url('/').'/'.$product->image}}" class="btn btn-default fancybox-button">Zoom</a>
                     <a href="#product-pop-up{{$count}}" class="btn btn-default fancybox-fast-view">View</a>
@@ -281,7 +281,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
                   @endif
 
-                  <input type="hidden" class="form-control" name="store_id" id="store_id"   value="{{$product->store_id}}">
+                   
                   <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
         
 
@@ -301,7 +301,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
               @else
           
-              <div class="container-fluid">
+              <div class="container">
           
           <div class="alert alert-info" >
   <strong>Info! </strong> No item found 

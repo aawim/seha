@@ -562,8 +562,7 @@ anchors are inline so you need ot make them block to go full width
         
         <!-- BEGIN fast view of a product -->
         <div id="product-pop-up{{$count}}" style="display: none; width: 700px;">
-      
-      
+       
         <form class="form-horizontal" action="{{route('cart.store')}}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                   <div class="product-page product-pop-up">
@@ -620,8 +619,7 @@ anchors are inline so you need ot make them block to go full width
                         <div class="product-page-cart">
                     
                           <!-- <button class="btn btn-primary" type="submit" onClick="{{route('store.create')}}">Add to cart</button> -->
-                        
-                        
+                                               
                       
                         <input type="hidden" class="form-control" name="product_id" id="product_id"   value="{{$product->id}}">
                                               <a href="{{route('item.show', $product->id)}}" class="btn btn-default">More details</a>

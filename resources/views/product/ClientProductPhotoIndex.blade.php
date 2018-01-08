@@ -63,20 +63,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
   <!-- Theme styles END -->
 
 
-  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>  
 
+    
+ 
 
-<style type="text/css">
-
-a>div { display: none; }
-a:hover>div { display: block; }
-
-</style>
-
-</head>
+  </head>
 <!-- Head END -->
 
 <!-- Body BEGIN -->
@@ -112,29 +107,44 @@ a:hover>div { display: block; }
 
     <div class="main">
       <div class="container">
-   
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Store</a></li>
+            <li class="active">My Account Page</li>
+        </ul>
         <!-- BEGIN SIDEBAR & CONTENT -->
-        <div class="row margin-bottom-80">
-               <div class=" col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
+        <div class="row margin-bottom-40">
+          <!-- BEGIN SIDEBAR -->
+          <div class="sidebar col-md-3 col-sm-3">
+            <ul class="list-group margin-bottom-25 sidebar-menu">
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Login/Register</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Restore Password</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> My account</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Address book</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Wish list</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Returns</a></li>
+              <li class="list-group-item clearfix"><a href="javascript:;"><i class="fa fa-angle-right"></i> Newsletter</a></li>
+            </ul>
+          </div>
+          <!-- END SIDEBAR -->
+
+          <!-- BEGIN CONTENT -->
+          <div class="right_col" role="main">
+          <div class="sidebar col-md-9 col-sm-9">
+            
+          <div class="x_panel">
                   <div class="x_title">
-                    <h2>Products are in the system.</h2>
+                    <h2>Product |<small>Products are in the system.</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-                    
-                    <!-- <li><a class=" " href=""><i class="btn btn-round btn-success">Create New Category</i></a> -->
-                  <li>  <a href="{{route('clientProduct.create')}}"><button type="submit" class="btn btn-success" style="a:hover:padding:0px;">Add New Product</button></a>
+                 
+                    <a href="{{url('client/clientProduct/create')}}"><button type="submit" class="btn btn-success">Add New Product</button></a>
                     
                   </li>
               
                       
                     </ul>
-
-                 
                     <div class="clearfix"></div>
                   </div>
-
-
-
                   <div class="x_content">
     
                     <table id="datatable" class="table table-striped table-bordered">
@@ -142,15 +152,7 @@ a:hover>div { display: block; }
                         <tr>
                           <th>#</th>
                           <th>Name</th>
-                          <th>Category</th>
-                          <th>Brand</th>
-                          <th>Size</th>
-                          <th>Price</th>
-                          
-                          <th>Image</th>
-                          <th>Qty</th>
-                        
-                          <th>Status</th>
+                          <th>Photos</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -162,74 +164,30 @@ a:hover>div { display: block; }
 
 
                     
-                      @foreach ($products->where('user_id',Auth::user()->id) as $count => $product)
+                      @foreach ($productPhotos as $count => $productPhoto)
 
                        
                                             <tr>
                                                 <th>{{$count+1}} </th>
-                                                <td>{{$product->name}} </td>
-                                                <td> 
-
-
-                                                @if($product->category()->first()!= null)
-                                                  
-                                                {{$product->category()->first()->name }} 
-
-                                                @else 
-
-                                                -
-
-                                                @endif
-
-
-                                                </td>
-                                                <td>
-
-                                                @if($product->brand()->first()!= null)
-                                                  
-                                                {{$product->brand()->first()->name }} 
-
-                                                @else 
-
-                                                -
-
-                                                @endif
-                                              
-                                              </td>
-                                                <td>{{$product->size}} </td>
-                                                <td>{{$product->price}} </td>
-                                                
-                                                <td width="100px">
+                                                <td>{{$productPhoto->name}} </td>
+                                               <td width="50px">
                                                     
                                                
-                                                 <a href="{{url('/').'/'.$product->image}}" target="_blank" > 
-                                                 <!-- <div class="product-main-image">-->
-                                                 View Image
-                                                 <div>
-                                                   <img src="{{url('/').'/'.$product->image}}" alt="Cool green dress with red bell" class="img-responsive">                                        
-                                                </div> 
-                                                
+                                                 <a href="{{url('/').'/'.$productPhoto->name}}" target="_blank" > 
+                                                 <div class="product-main-image">
+                                                 <img src="{{url('/').'/'.$productPhoto->name}}" alt="Cool green dress with red bell" class="img-responsive">                                        
+                                               </div>
                                                 </a> 
                                             
                                             
                                             
                                             </td>
-                                                <td>{{$product->qty}} </td>
-                                              
-                                                
-                                                <td>
-                                                @if($product->is_active == 1)
-                                                 <span style="color:green"> Active </span>
-                                                  @else
-                                                  <span style="color:orange">  Pending activation </span> 
-                                                  @endif        
-                                            
-                                            </td>
+                                        
                                                 <td>
                                                 
-                              <a href="{{route('clientProduct.edit', $product->id)}}">Edit</a> 
+                              <a href="{{route('photo.edit', $productPhoto->id)}}">Edit</a> 
                                  <a href="#" data-toggle="modal" data-target="#deleteModal{{$count}}"
-                                data-delete-id="{{$product->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
+                                data-delete-id="{{$productPhoto->id}}" onclick="$('#delete-id').val($(this).data('delete-id'));">Delete</a>
                                                  
                                                 </td>
                                               
@@ -250,7 +208,7 @@ a:hover>div { display: block; }
   <!-- Modal content-->
   <div class="modal-content">
 
-    <form class="form-horizontal" action="{{route('clientProduct.destroy',$product->id)}} " method="POST">
+    <form class="form-horizontal" action="{{route('photo.destroy',$productPhoto->id)}} " method="POST">
 
     {{method_field('DELETE')}}  {!! csrf_field() !!} 
 
@@ -299,14 +257,15 @@ a:hover>div { display: block; }
 
       
 
+    </div>
   </div>
-</div>
-           
-
-
-
-
+  
+             
+            </div>
+         </div>
+          <!-- END CONTENT -->
         </div>
+        <!-- END SIDEBAR & CONTENT -->
       </div>
     </div>
 
@@ -349,6 +308,8 @@ a:hover>div { display: block; }
 
      
  
+ 
+
     <!-- END PAGE LEVEL JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

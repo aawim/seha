@@ -84,11 +84,10 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 
  // STORE CONTROLLER
 Route::post('manage/store/storecreate', 'StoreController@adminstorecreate');
-
 // PRODUCT PHPTO CONTROLLER
-Route::get('/manage/photo/{id}', 'ProductPhotoController@addPhoto');
-Route::get('/manage/view/{id}', 'ProductPhotoController@viewPhoto');
-     
+Route::get('/photo/add/{id}', 'ProductPhotoController@addPhoto');
+Route::get('/photo/view/{id}', 'ProductPhotoController@viewPhoto');
+    
 });
 });
 
@@ -104,6 +103,9 @@ Route::group(['middleware' => 'App\Http\Middleware\ClientMiddleware'], function(
         Route::resource('/reply', 'ReplyController');
         Route::resource('/address', 'AddressBookController');
         Route::resource('/clientProduct', 'ClientProductController');
+        Route::resource('/rememberSearch', 'ClientRememberSearchController');
+        Route::get('/product/photo/add/{id}', 'ProductPhotoController@clientAddPhoto');
+        Route::get('/product/photo/view/{id}', 'ProductPhotoController@clientViewPhoto');
 
     });
 });

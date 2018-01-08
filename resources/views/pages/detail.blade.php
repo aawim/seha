@@ -273,8 +273,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       @endforeach
                     </div>
                    
-                   
-                  
+                                 
                     <div class="tab-pane fade in active" id="Reviews">
                       <!--<p>There are no reviews for this product.</p>-->
                       @foreach ($reviews as $count2 => $review)
@@ -306,19 +305,21 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                               {{  substr($review->description ,80, strlen($review->description) ) }} 
                               <a  data-toggle="collapse" data-target="#{{$count2}}" style="text-decoration:none; cursor:pointer;" id="Show{{$count2}}" > Less </a> 
                            
-                            
-                      
+                                               
 
                            @else
                            {{$review->description}} 
                           @endif
                             
-                       
+                          
+
+@if(2 === 2 )
 
 
 
+@endif
 
-                           </div>
+                          </div>
                             </p>
                         </div>
                       </div>

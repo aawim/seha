@@ -53,12 +53,12 @@ class ReviewController extends Controller
     {
         
         $reviews = Review::where('is_active','1')->where('id',$id)->get();
-         $reviewsum = Review::sum('rating'); 
+         
         $categories = Category::where('is_active','1')->orderBy('name')->get();
         $product = Product::find($id);
         $users = User::all();
         if(count($reviews)>0){
-                return view('pages.reviewEdit',[  'reviewsum'=>$reviewsum,  'users'=>$users, 'categories'=> $categories , 'reviews' => $reviews,  'product' => $product, ]);
+                return view('pages.reviewEdit',[  'users'=>$users, 'categories'=> $categories , 'reviews' => $reviews,  'product' => $product, ]);
                }else{
 
             }

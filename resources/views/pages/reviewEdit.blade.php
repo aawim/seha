@@ -148,7 +148,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                     <div class="tab-pane fade" id="Description">
                     @foreach ($reviews as $count2 => $review)
                       @foreach ($users as $count => $user)
-                      @if($review->user_id === $user->id)
+                      @if($review->user_id == $user->id)
                      
                       
                       <div class="review-item clearfix">
@@ -173,7 +173,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
                       <!--<p>There are no reviews for this product.</p>-->
                       @foreach ($reviews as $count2 => $review)
                       @foreach ($users as $count => $user)
-                      @if($review->user_id === $user->id)
+                      @if($review->user_id == $user->id)
                       @if($count2 > 2)
                       @else
                       

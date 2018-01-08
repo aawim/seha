@@ -27,43 +27,18 @@ class ProductDetailController extends Controller
     
     public function show($id)
     {
+       
+           $ratingSum = Review::where('is_active','1')->where('product_id',$id)->sum('rating');
+           $ratingCount = Review::where('is_active','1')->where('product_id',$id)->get();
+
    
- // if (Auth::check()){
-        //     $otherPhotoes = ProductPhoto::where('product_id',$id)->get();
-        //     $reviews = Review::where('is_active','1')->where('product_id',$id)->get(); 
-        //     $categories = Category::where('is_active','1')->orderBy('name')->get();
-        //     $product = Product::find($id);
-        //     $users = User::all();
-        //    if(count($product)>0){
-        //     return view('pages.detail',['product'=>$product, 'users'=>$users, 'categories'=> $categories , 'reviews' => $reviews,'otherPhotoes'=> $otherPhotoes ]);
-        //    }else{
-        //    }
-                     
-        //     }else{
-        //         $users = User::all();
-        //         $otherPhotoes = ProductPhoto::where('product_id',$id)->get();
-        //         $reviews = Review::where('is_active','1')->get(); 
-        //         $categories = Category::where('is_active','1')->orderBy('name')->get();
-        //         $product = Product::find($id);
-          
-          
-        //   if(count($product)>0){
-        //     return view('pages.detail',['product'=>$product, 'categories'=> $categories , 'reviews' => $reviews,'otherPhotoes'=> $otherPhotoes  ]);
-        //    }else{
-
-            
-        //    }
-
-
-
             $otherPhotoes = ProductPhoto::where('product_id',$id)->get();
             $reviews = Review::where('is_active','1')->where('product_id',$id)->inRandomOrder()->get();
-            $reviewsum = Review::sum('rating'); 
             $categories = Category::where('is_active','1')->orderBy('name')->get();
             $product = Product::find($id);
             $users = User::all();
             if(count($product)>0){
-                    return view('pages.detail',['reviewsum'=>$reviewsum,'product'=>$product, 'users'=>$users, 'categories'=> $categories , 'reviews' => $reviews,'otherPhotoes'=> $otherPhotoes ]);
+                    return view('pages.detail',[ 'product'=>$product, 'ratingCount'=>$ratingCount, 'ratingSum'=>$ratingSum, 'users'=>$users, 'categories'=> $categories , 'reviews' => $reviews,'otherPhotoes'=> $otherPhotoes ]);
                    }else{
 
                 }

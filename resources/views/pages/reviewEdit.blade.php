@@ -138,35 +138,14 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
           
 
                 <div class="product-page-content">
-                  <ul id="myTab" class="nav nav-tabs">
-                    <li><a href="#Description" data-toggle="tab">View All Review</a></li>
+                  <!-- <ul id="myTab" class="nav nav-tabs">
+                    <!-- <li><a href="#Description" data-toggle="tab">View All Review</a></li> -->
                    <!--  <li><a href="#Information" data-toggle="tab">Information</a></li> -->
-                    <li class="active"><a href="#Reviews" data-toggle="tab">Reviews ({{count($reviews)}})</a></li>
-                  </ul>
+                    <!-- <li class="active"><a href="#Reviews" data-toggle="tab">Reviews ({{count($reviews)}})</a></li>
+                  </ul>  -->
                   
                   <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade" id="Description">
-                    @foreach ($reviews as $count2 => $review)
-                      @foreach ($users as $count => $user)
-                      @if($review->user_id == $user->id)
-                     
-                      
-                      <div class="review-item clearfix">
-                        <div class="review-item-submitted">
-                          <strong>Author : {{UCfirst($user->name)}} </strong>
-                          <em>{{$review->created_at}}</em>
-                          <div class="rateit" data-rateit-value="{{$review->rating}}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                        </div>                                              
-                        <div class="review-item-content">
-                            <p>{{$review->description}}</p>
-                        </div>
-                      </div>
-                      
-                      @endif
-
-                      @endforeach
-                      @endforeach
-                    </div>
+             
                    
                   
                     <div class="tab-pane fade in active" id="Reviews">

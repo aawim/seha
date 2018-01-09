@@ -121,6 +121,9 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 
         <!-- BEGIN SIDEBAR & CONTENT -->
         <div class="row margin-bottom-40">
+        
+        
+        
           <!-- BEGIN SIDEBAR -->
           <div class="sidebar col-md-3 col-sm-5">
           <ul class="list-group margin-bottom-25 sidebar-menu">
@@ -134,25 +137,35 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
        </ul>
 
             <div class="sidebar-products clearfix">
-              <h2>Bestsellers</h2>
-              <div class="item">
-                <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/products/k1.jpg'}}" alt="Some Shoes in Animal with Cut Out"></a>
-                <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                <div class="price">$31.00</div>
-              </div>
-              <div class="item">
-                <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/products/k4.jpg'}}" alt="Some Shoes in Animal with Cut Out"></a>
-                <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                <div class="price">$23.00</div>
-              </div>
-              <div class="item">
-                <a href="shop-item.html"><img src="{{url('/').'/assets/pages/img/products/k3.jpg'}}" alt="Some Shoes in Animal with Cut Out"></a>
-                <h3><a href="shop-item.html">Some Shoes in Animal with Cut Out</a></h3>
-                <div class="price">$86.00</div>
-              </div>
+              <h2>Items You have Checked</h2>
+              
+              
+                
+                @foreach ($productss as $count => $products)
+                @foreach ($searches->where('product_id', $products->id)  as $count => $searche)
+                @if( $searche->product_id == $products->id )
+                <div class="item">
+                  <a href="{{route('item.show', $searche->product_id)}}"><img src="{{url('/').'/'.$products->image}}" alt="Some Shoes in Animal with Cut Out"></a>
+                  <h3><a href="{{route('item.show', $searche->product_id)}}">{{$products->name}}</a></h3>
+                  <div class="price">${{$products->price}}</div>
+                </div>
+
+
+
+                @else
+                alsjlkajs
+                @endif
+                @endforeach
+                @endforeach
+
+
             </div>
           </div>
           <!-- END SIDEBAR -->
+
+
+
+
 
           <!-- BEGIN CONTENT -->
           <div class="col-md-9 col-sm-7">

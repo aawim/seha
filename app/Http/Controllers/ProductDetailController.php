@@ -16,12 +16,14 @@ class ProductDetailController extends Controller
     
     public function index()
     {
+       
+       
         $reviews = Review::where('is_active','1')->get();     
         $categories = Category::where('is_active','1')->orderBy('name')->get();
-        return view('pages.detail',['categories'=> $categories, 'reviews' => $reviews]);
+       return view('pages.detail',['categories'=> $categories, 'reviews' => $reviews]);
+ 
 
-
-
+            
 
     }
 
@@ -50,9 +52,16 @@ class ProductDetailController extends Controller
            $reviews = Review::where('is_active','1')->where('product_id',$id)->inRandomOrder()->get();
            $categories = Category::where('is_active','1')->orderBy('name')->get();
            $product = Product::find($id);
+           $productss = Product::where('is_active','1')->get();
+          
+          
+           $searches = RememberSearch::select('product_id')->limit(3)->inRandomOrder()->groupBy('product_id')->get();
+
+            
+
            $users = User::all();
            if(count($product)>0){
-            return view('pages.detail',[ 'product'=>$product, 'ratingCount'=>$ratingCount, 'ratingSum'=>$ratingSum, 'users'=>$users, 'categories'=> $categories , 'reviews' => $reviews,'otherPhotoes'=> $otherPhotoes ]);
+            return view('pages.detail',['productss'=>$productss, 'searches'=>$searches, 'product'=>$product, 'ratingCount'=>$ratingCount, 'ratingSum'=>$ratingSum, 'users'=>$users, 'categories'=> $categories , 'reviews' => $reviews,'otherPhotoes'=> $otherPhotoes ]);
               } 
 
 
